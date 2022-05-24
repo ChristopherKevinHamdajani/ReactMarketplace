@@ -1,0 +1,76 @@
+.text_field_input {
+    width:50% !important;
+    margin-bottom: 10px !important;
+}
+.text_field_input input:valid:focus + fieldset{
+    border-color: #FB6107 !important;
+}
+
+.error_box{
+    text-align: center;
+    border: red 1px solid;
+    width: 80%;
+    height: 30px;
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px!important;
+}
+
+.button_edit {
+    font-size: 20px !important;
+    color: #5C8001 !important;
+    height: 60px !important;
+    width: 270px !important;
+    margin-top: 10px !important;
+    border-radius: 40px !important;
+    background-color: white !important;
+    border: #5C8001 1px solid !important;
+
+}
+.button_edit:hover {
+    color: white !important;
+    background-color:#FB6107 !important;
+    transition: 0.7s !important;
+}
+
+.button_cancel {
+    font-size: 20px !important;
+    color: #5C8001 !important;
+    height: 60px !important;
+    width: 270px !important;
+    margin-top: 10px !important;
+    border-radius: 40px !important;
+    background-color: white !important;
+    border: #5C8001 1px solid !important;
+
+}
+.button_cancel:hover {
+    color: white !important;
+    background-color:red !important;
+    transition: 0.7s !important;
+}
+
+.preview_image {
+    height: 300px;
+    width:300px;
+}
+
+.register_title {
+    color: black;
+    font-weight: bold;
+    font-size: 70px;
+    margin: 0;
+}
+
+.text_info{
+    font-weight:bold !important;
+    margin-bottom: 10px!important;
+}
+
+.visibility_icon:hover {
+    cursor: pointer;
+}
+

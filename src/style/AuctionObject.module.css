@@ -1,0 +1,40 @@
+
+.container_item:hover {
+    border: 5px solid #94D91C;
+    transition: 0.2s !important;
+    cursor: pointer;
+}
+
+.container_item {
+    position: relative;
+}
+.category_chip{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.footer_card {
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    height: 50px;
+}
+
+
+.footer_left{
+    display: flex;
+    flex-direction: row;
+}
+.footer_left p{
+    margin:0 0 0 5px;
+    font-weight: bold;
+}
+
+.footer_right p{
+    font-weight: bold;
+    margin:0 0 0 5px;
+}

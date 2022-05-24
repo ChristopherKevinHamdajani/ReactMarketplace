@@ -1,0 +1,136 @@
+.main_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-family: Carlito;
+}
+
+.auction_detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+
+}
+
+.auction_detail_image {
+    height: fit-content;
+    position: relative;
+    margin-right: 15px;
+
+}
+.auction_detail_image img {
+    height: 500px;
+    width:600px;
+}
+
+.auction_detail_info {
+    elevation:higher;
+    box-shadow:  0 0 20px #5C9001;
+    width: 600px;
+}
+
+.bid_card {
+    elevation:higher;
+    box-shadow:  0 0 20px #5C9001;
+    width: 450px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auction_details_info_desc {
+    text-align: left !important;
+    padding: 20px;
+}
+
+.auction_details_info_desc p {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.category_chip{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 30px!important;
+    font-weight: bold;
+    width: fit-content;
+    height: 40px!important;
+}
+
+.footer_left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.footer_left p{
+    margin-bottom: 0 !important;
+    margin-left: 5px;
+}
+
+.text_seller {
+    margin: 0 !important;
+}
+
+.item_title{
+    margin: 0;
+    font-weight: bold;
+}
+.each_bidder{
+    border: 5px solid #94D91C;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.below_container {
+    margin:45px 15px 15px 15px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.bidders_container {
+    width: 40%;
+    border: 10px solid #FB6107;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 40px;
+    height: fit-content!important;
+}
+
+.similar_container {
+    width: 40%;
+    border: 10px solid #FB6107;
+    border-radius: 40px;
+    height: fit-content!important;
+}
+
+.button_bid {
+    font-size: 20px !important;
+    color: #5C8001 !important;
+    height: 60px !important;
+    width: 270px !important;
+    margin-top: 10px !important;
+    border-radius: 40px !important;
+    background-color: white !important;
+    border: #5C8001 1px solid !important;
+
+}
+.button_bid:hover {
+    color: white !important;
+    background-color:#FB6107 !important;
+    transition: 0.7s !important;
+}
