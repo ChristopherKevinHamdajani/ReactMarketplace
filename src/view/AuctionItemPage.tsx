@@ -46,7 +46,7 @@ const AuctionItemPage = () => {
     const [errorBidMessage, setErrorBidMessage] = React.useState("");
     const [theBid, setTheBid] = React.useState("");
     let userLoggedIn :UserLoggedIn = JSON.parse(localStorage.getItem("userLoggedIn") as string)
-    const defaultItem : AuctionsItem = {"auctionId": 1, "categoryId": 23,
+    const defaultItem : AuctionsItem = {"auctionId": -1, "categoryId": -1,
         "description": "",
         "endDate": "",
         "highestBid": -1,
@@ -65,20 +65,6 @@ const AuctionItemPage = () => {
         margin: "10px",
         padding: "0px"
     }
-
-    // const getItemImage = () => {
-    //     auctionApi.getAuctionImage(item.auctionId)
-    //         .then((response) => {
-    //             console.log(item.auctionId)
-    //             const current_image_url = "http://localhost:4941/api/v1/auctions/"+item.auctionId+"/image"
-    //             setImageUrl(current_image_url)
-    //         }, (error) => {
-    //             if(error.response.status === 404 || error.response.status === 500 ){
-    //                 setImageUrl("")
-    //             }
-    //         })
-    // }
-
 
     const getCategoryItem = () => {
         for(let i =0; i < allCategories.length; i++){

@@ -9,6 +9,7 @@ import ProfilePage from "./view/ProfilePage";
 import EditProfilePage from "./view/EditProfilePage";
 import UpdateUserSuccess from "./view/UpdateUserSuccessPage";
 import AuctionItemPage from "./view/AuctionItemPage";
+import MyAuctionsPage from "./view/MyAuctionsPage";
 function App() {
   return (
       <div className="App">
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/editprofile" element={<EditProfilePage/>}/>
                 <Route path="/updateusersuccess" element={<UpdateUserSuccess/>}/>
                 <Route path="/auctionitem/:auctionId" element={<AuctionItemPage/>}/>
+                <Route path="/myauctions" element={<MyAuctionsPage/>}/>
             </Routes>
           </div>
         </Router>

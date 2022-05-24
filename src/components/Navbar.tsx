@@ -54,6 +54,7 @@ const Navbar = () => {
                         <Button color="inherit" onClick={() => navigateTo("/register")}>Signup</Button>
                     </div>
                     <div className="navbar-button-container" style={userLoggedIn===null || (userLoggedIn.token===""&& userLoggedIn.userId===-1)?{display:'none'}:{display:''}} >
+                        <Button color="inherit" onClick={() => navigateTo("/myauctions")}>My Auction Items</Button>
                         <Button color="inherit" onClick={() => navigateTo("/userprofile")}>Profile</Button>
                         <Button color="inherit"  onClick={() => logOutUser()}>Logout</Button>
                     </div>

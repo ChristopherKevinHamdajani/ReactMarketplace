@@ -34,4 +34,9 @@ const postBid = async (id: number,data:any, token:any): Promise<any> => {
     return await axios.post(url,data, {headers: {"X-Authorization": token}})
 }
 
-export default {getAllAuctions, getAuctionImage,getAllCategories, getSingleAuction, getBidders, getAllAuctionsWithData,postBid}
+const deleteItemAuction = async (id: number, token:any): Promise<any> => {
+    let url = 'http://localhost:4941/api/v1/auctions/'+id;
+    return await axios.delete(url, {headers: {"X-Authorization": token}})
+}
+
+export default {getAllAuctions, getAuctionImage,getAllCategories, getSingleAuction, getBidders, getAllAuctionsWithData,postBid, deleteItemAuction}
