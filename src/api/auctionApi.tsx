@@ -39,4 +39,19 @@ const deleteItemAuction = async (id: number, token:any): Promise<any> => {
     return await axios.delete(url, {headers: {"X-Authorization": token}})
 }
 
-export default {getAllAuctions, getAuctionImage,getAllCategories, getSingleAuction, getBidders, getAllAuctionsWithData,postBid, deleteItemAuction}
+const changeAuctionImage = async (id:number,image: any, token:any): Promise<any> => {
+    let url = 'http://localhost:4941/api/v1/auctions/'+id+"/image";
+    return await axios.put(url, image,{headers: {"X-Authorization": token, "Content-Type": image.type}})
+}
+
+const updateAuction = async (id:number,data: any, token:any): Promise<any> => {
+    let url = 'http://localhost:4941/api/v1/auctions/'+id;
+    return await axios.patch(url, data,{headers: {"X-Authorization": token}})
+}
+
+const postAuction = async (data: any, token:any): Promise<any> => {
+    let url = 'http://localhost:4941/api/v1/auctions';
+    return await axios.post(url, data,{headers: {"X-Authorization": token}})
+}
+
+export default {getAllAuctions, getAuctionImage,getAllCategories, getSingleAuction, getBidders, getAllAuctionsWithData,postBid, deleteItemAuction,changeAuctionImage, updateAuction, postAuction}

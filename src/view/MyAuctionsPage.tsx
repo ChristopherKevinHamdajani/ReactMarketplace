@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import CSS from 'csstype';
-import {Paper, AlertTitle, Alert, alpha, styled, TextField, InputAdornment} from "@mui/material";
+import {Paper, AlertTitle, Alert, alpha, styled, TextField, InputAdornment, Button} from "@mui/material";
 import AuctionItemObject from "../components/AuctionItemObject";
 import {useUserStore} from "../store";
 import auctionApi from '../api/auctionApi';
@@ -11,8 +11,10 @@ import styles from "../style/AuctionPage.module.css";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import SearchIcon from '@mui/icons-material/Search';
 import MyAuctionItemObject from "../components/MyAuctionItemObject";
+import {useNavigate} from "react-router-dom";
 
 const AuctionPage = () => {
+    const navigate=useNavigate();
     const [items, setItems] = React.useState<Array<AuctionsItem>>([])
     const [biddedItems, setBiddedItems] = React.useState<Array<AuctionsItem>>([])
     const [errorFlag, setErrorFlag] = React.useState(false)
@@ -63,6 +65,7 @@ const AuctionPage = () => {
             {/*<div className={styles.top_bar}>*/}
             {/*    */}
             {/*</div>*/}
+
             <h1>My Items</h1>
             <div style={{display:"inline-block", maxWidth:"95%", minWidth:"320"}}>
                 {errorFlag? <Alert severity="error">
@@ -71,7 +74,14 @@ const AuctionPage = () => {
                     </Alert>
                     :""}
                 {items.length === 0?<h1 style={{color:"red"}}>You have not put any item on auction</h1>:item_rows()}
+
             </div>
+            <div>
+                <Button className={styles.button_signup} onClick={()=>{navigate("/addauction")}}>
+                    Add More Item
+                </Button>
+            </div>
+
             <h1>Items I Have Bid On</h1>
             <div style={{display:"inline-block", maxWidth:"95%", minWidth:"320"}}>
                 {errorFlag? <Alert severity="error">

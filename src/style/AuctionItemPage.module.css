@@ -102,19 +102,15 @@
 
 .bidders_container {
     width: 40%;
-    border: 10px solid #FB6107;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border-radius: 40px;
     height: fit-content!important;
 }
 
 .similar_container {
     width: 40%;
-    border: 10px solid #FB6107;
-    border-radius: 40px;
     height: fit-content!important;
 }
 

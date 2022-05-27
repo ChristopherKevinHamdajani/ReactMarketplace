@@ -7,6 +7,7 @@
 
 .container_item {
     position: relative;
+    min-height: 450px;
 }
 .category_chip{
     position: absolute;
@@ -14,9 +15,19 @@
     left: 5px;
 }
 
-.footer_card {
+.footer_card_down {
     position: absolute;
     bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.footer_card_up {
+    position: absolute;
+    bottom: 65px;
     display: flex;
     flex-direction: row;
     width: 90%;
