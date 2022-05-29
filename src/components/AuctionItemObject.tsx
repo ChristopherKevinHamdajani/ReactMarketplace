@@ -38,18 +38,16 @@ const AuctionItemObject = (props: AuctionItemProps) => {
     const [imageUrl, setImageUrl] = React.useState("");
     const navigate=useNavigate();
 
+
     const calculateRemainingDays = (closingDate : any) => {
-        const today = new Date();
-        const closeDate = new Date(closingDate);
-        const remaining_milliseconds = closeDate.getTime() - today.getTime();
-        let remaining_days = remaining_milliseconds / 86400000;
-        if(remaining_days < 0){
-            remaining_days = Math.ceil(remaining_days)
-        } else {
-            remaining_days = Math.floor(remaining_days)
-        }
+        const now = new Date()
+        const end_date = new Date(closingDate)
+        const utc_end = Date.UTC(end_date.getFullYear(), end_date.getMonth(), end_date.getDate());
+        const utc_now = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        const remaining_days = Math.floor((utc_end - utc_now) / _MS_PER_DAY)
         setRemainingDays(remaining_days);
-    };
+    }
 
     React.useEffect(() => {
         userLoggedIn =JSON.parse(localStorage.getItem("userLoggedIn") as string)
@@ -146,7 +144,7 @@ const AuctionItemObject = (props: AuctionItemProps) => {
 
                 <div className={styles.footer_card}>
                     <div className={styles.footer_left}>
-                        <Avatar alt={item.sellerFirstName} src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
+                        <Avatar src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
                         <div>
                             <p>{item.sellerFirstName}</p>
                             <p>{item.sellerLastName}</p>

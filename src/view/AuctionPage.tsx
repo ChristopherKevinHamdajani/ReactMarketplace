@@ -52,12 +52,9 @@ const AuctionPage = () => {
         if(sortingParam !== ""){
             url += "&sortBy="+sortingParam
         }
-        console.log(statusParam)
 
         url += "&status="+statusParam
 
-
-        console.log("THIS is th url= "+url)
 
         const getPaginatedItems = () => {
 
@@ -257,7 +254,7 @@ const AuctionPage = () => {
                 {user_rows()}
             </div>
             <div style={{display:"flex",justifyContent:"center",marginBottom:100}}>
-                <Pagination count={Math.ceil(totalItem/10)} defaultPage={1} size="large" onChange={handleChangePage} shape="rounded" />
+                <Pagination count={Math.ceil(totalItem/10)} page={numPage} size="large" onChange={handleChangePage} shape="rounded" />
             </div>
 
         </div>

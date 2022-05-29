@@ -95,18 +95,6 @@ const ProfilePage = () => {
 
     }, [])
 
-    // const registerUser = () => {};
-    //
-    // const handleCapture = ({ target }: any) => {
-    //     setImageUrl(URL.createObjectURL(target.files[0]));
-    //     console.log(typeof target.files[0])
-    //     setImage(target.files[0]);
-    // };
-    //
-    // const deleteImagePreview = () => {
-    //     setImage("");
-    // };
-
 
 
     return (

@@ -62,8 +62,8 @@ const AddAuctionPage = () => {
     const [errorEditMessage, setErrorEditMessage] = React.useState("");
     const [selectedEditDescription, setSelectedEditDescription] = React.useState("");
     const [selectedEditTitle, setSelectedEditTitle] = React.useState("");
-    const [selectedEditCategory, setSelectedEditCategory] = React.useState("");
-    const [selectedEditReserve, setSelectedEditReserve] = React.useState("");
+    const [selectedEditCategory, setSelectedEditCategory] = React.useState("1");
+    const [selectedEditReserve, setSelectedEditReserve] = React.useState("1");
     const [selectedEditDate, setSelectedEditDate] = React.useState("");
     const [allCategories, setAllCategories] = React.useState<Categories[]>([]);
 
@@ -98,11 +98,7 @@ const AddAuctionPage = () => {
 
     }, [])
 
-    const uploadImage = async () => {
 
-        await userImageApi.uploadUserImage(userLoggedIn.userId,image,userLoggedIn.token)
-            .then((response) => {}, (error) => {setErrorMessage(error.toString)})
-    };
 
     const handleCapture = ({ target }: any) => {
         setImageUrl(URL.createObjectURL(target.files[0]));
@@ -111,17 +107,6 @@ const AddAuctionPage = () => {
     };
 
 
-
-    const deleteImagePreview = () => {
-        userImageApi.deleteUserImage(userLoggedIn.userId, userLoggedIn.token)
-            .then((response) => {
-                setImageUrl("");
-            }, (error) => {
-                setImageUrl("")
-
-            })
-
-    };
 
     const handleChangeEditCategory = (event: SelectChangeEvent) => {
 
@@ -137,7 +122,7 @@ const AddAuctionPage = () => {
 
         const today = new Date()
         const temp = new Date(selectedEditDate);
-        console.log(temp<today)
+
         if(temp < today){
             return true
         }else {
@@ -147,18 +132,13 @@ const AddAuctionPage = () => {
 
 
     const post_auction = () => {
-        console.log(selectedEditDate)
-        console.log(selectedEditCategory);
-        console.log(selectedEditTitle)
-        console.log(Number(selectedEditReserve))
-        console.log(selectedEditDescription)
-        console.log(image)
-
         setErrorEditMessage("")
         if(image === ""){
             setErrorEditMessage("Image is required")
         } else if(selectedEditTitle==="" || selectedEditDescription === ""){
             setErrorEditMessage("Title and description are required")
+        } else if(selectedEditDate==="") {
+            setErrorEditMessage("End Date Is Required")
         } else if (checkEditDate()){
             setErrorEditMessage("End Date Must Be In The Future")
         } else if(Number(selectedEditReserve) < 0){
@@ -239,7 +219,7 @@ const AddAuctionPage = () => {
                             </FormControl>
                             <TextField
                                 id="outlined-error"
-                                label="Date and time"
+                                label="End Date"
                                 style = {{width: 700}}
                                 type={"datetime-local"}
                                 onChange={(event) => {setSelectedEditDate(event.target.value)}}

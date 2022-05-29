@@ -138,8 +138,6 @@ const EditProfilePage = () => {
                     userApi.updateUser(userLoggedIn.userId,updateRequest,userLoggedIn.token)
                         .then((response) => {navigate("/updateusersuccess")}, (error) => {if(error.response.status === 400){
                             setErrorMessage("Invalid password(s)")
-                            setNewPassword("")
-                            setCurrentPassword("")
                         }})
                 }
             } else {

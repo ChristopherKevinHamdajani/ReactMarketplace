@@ -131,11 +131,10 @@ const AuctionItemPage = () => {
         const pathname = window.location.pathname;
         const myArray = pathname.split("/");
         const getAuctionId = parseInt(myArray[2]);
-        console.log(getAuctionId)
+
         const getItem =  () => {
             auctionApi.getSingleAuction(getAuctionId)
                 .then((response) => {
-                    console.log(response.data)
                     setItem(response.data)
                     auctionApi.getAllAuctions()
                         .then((response) => {
@@ -192,7 +191,7 @@ const AuctionItemPage = () => {
         } else {
             return bidders.map((bidder: Bidder) =>
                 <div className={styles.each_bidder}>
-                    <Avatar sx={{ width: 60, height: 60 }} alt={bidder.firstName} src={"http://localhost:4941/api/v1/users/"+bidder.bidderId+"/image"} />
+                    <Avatar sx={{ width: 60, height: 60 }} src={"http://localhost:4941/api/v1/users/"+bidder.bidderId+"/image"} />
                     <p>{bidder.firstName} {bidder.lastName}</p>
                     <p>{getEndDate(bidder.timestamp)}</p>
                     <p>${bidder.amount}</p>
@@ -295,7 +294,6 @@ const AuctionItemPage = () => {
             auctionApi.postBid(item.auctionId, {"amount":Number(theBid)},userLoggedIn.token)
                 .then((response) => {
                     if(response.status === 201){
-                        console.log("nicee one")
                         setTheBid("")
                         window.location.reload()
                     }
@@ -338,7 +336,7 @@ const AuctionItemPage = () => {
                             <div className={styles.auction_details_info_desc}>
                                 <p className={styles.text_seller}>Seller Information:</p>
                                 <div className={styles.footer_left}>
-                                    <Avatar sx={{ width: 60, height: 60 }} alt={item.sellerFirstName} src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
+                                    <Avatar sx={{ width: 60, height: 60 }} src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
                                     <p>{item.sellerFirstName}</p>
                                     <p>{item.sellerLastName}</p>
 

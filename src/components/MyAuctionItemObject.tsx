@@ -144,32 +144,18 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
 
 
     const calculateRemainingDays = (closingDate : any) => {
-        const today = new Date();
-        const closeDate = new Date(closingDate);
-        const remaining_milliseconds = closeDate.getTime() - today.getTime();
-        let remaining_days = remaining_milliseconds / 86400000;
-        if(remaining_days < 0){
-            remaining_days = Math.ceil(remaining_days)
-        } else {
-            remaining_days = Math.floor(remaining_days)
-        }
+        const now = new Date()
+        const end_date = new Date(closingDate)
+        const utc_end = Date.UTC(end_date.getFullYear(), end_date.getMonth(), end_date.getDate());
+        const utc_now = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        const remaining_days = Math.floor((utc_end - utc_now) / _MS_PER_DAY)
         setRemainingDays(remaining_days);
-    };
+    }
 
 
 
     const trim_selected_item_end_date = () => {
-
-        // const d = new Date(item.endDate) ;
-        // d.setTime(d.getTime() + 13 * 60 * 60 * 1000);
-        // const day = d.getDay();
-        // const year = d.getFullYear();
-        // const month = d.getMonth()
-        // const hours = d.getHours()
-        // const min = d.getMinutes()
-        // const temp = year.toString(10) + "-" + month.toString(10) + "-" + day.toString(10) + "T"+ hours.toString(10) + ":"+min.toString(10)
-        // console.log(temp)
-
         const trimmed_end_date = item.endDate.slice(0,16);
         setSelectedEditDate(trimmed_end_date)
     };
@@ -305,7 +291,7 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
 
                 <div className={styles.footer_card_up}>
                     <div className={styles.footer_left}>
-                        <Avatar alt={item.sellerFirstName} src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
+                        <Avatar src={"http://localhost:4941/api/v1/users/"+item.sellerId+"/image"} />
                         <div>
                             <p>{item.sellerFirstName}</p>
                             <p>{item.sellerLastName}</p>
