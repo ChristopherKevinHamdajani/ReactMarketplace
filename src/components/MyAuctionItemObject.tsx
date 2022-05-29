@@ -118,18 +118,12 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
     const [selectedEditDescription, setSelectedEditDescription] = React.useState(selectedItemFull.description);
     const [selectedEditReserve, setSelectedEditReserve] = React.useState(item.reserve.toString(10));
 
-
     const handleChangeEditCategory = (event: SelectChangeEvent) => {
 
         setSelectedEditCategory(event.target.value as string);
 
     };
 
-    const handleChangeEditDate = (event: SelectChangeEvent) => {
-
-        setSelectedEditDate(event.target.value as string);
-
-    };
 
     const handleCapture = ({ target }: any) => {
         setImageUrl(URL.createObjectURL(target.files[0]));
@@ -162,7 +156,20 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
         setRemainingDays(remaining_days);
     };
 
+
+
     const trim_selected_item_end_date = () => {
+
+        // const d = new Date(item.endDate) ;
+        // d.setTime(d.getTime() + 13 * 60 * 60 * 1000);
+        // const day = d.getDay();
+        // const year = d.getFullYear();
+        // const month = d.getMonth()
+        // const hours = d.getHours()
+        // const min = d.getMinutes()
+        // const temp = year.toString(10) + "-" + month.toString(10) + "-" + day.toString(10) + "T"+ hours.toString(10) + ":"+min.toString(10)
+        // console.log(temp)
+
         const trimmed_end_date = item.endDate.slice(0,16);
         setSelectedEditDate(trimmed_end_date)
     };
@@ -198,7 +205,7 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
 
         const today = new Date()
         const temp = new Date(selectedEditDate);
-        console.log(temp<today)
+
         if(temp < today){
             return true
         }else {
@@ -319,7 +326,6 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
                             <Button variant="contained" color="success" onClick={ () => {
                                 trim_selected_item_end_date()
                                 get_selected_item()
-
                             }}>
                                 Edit
                             </Button>
@@ -427,7 +433,7 @@ const MyAuctionItemObject = (props: AuctionItemProps) => {
                         </FormControl>
                         <TextField
                             id="outlined-error"
-                            label="Date and time"
+                            label="End Date and time"
                             defaultValue={selectedEditDate}
                             fullWidth={true}
                             type={"datetime-local"}

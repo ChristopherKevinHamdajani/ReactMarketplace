@@ -137,7 +137,7 @@ const AuctionItemPage = () => {
                 .then((response) => {
                     console.log(response.data)
                     setItem(response.data)
-                    auctionApi.getAllAuctionsWithData("http://localhost:4941/api/v1/auctions?categoryIds="+response.data.categoryId+"?sellerId="+response.data.sellerId)
+                    auctionApi.getAllAuctions()
                         .then((response) => {
 
                             setSimilarItems(response.data.auctions);
@@ -204,7 +204,7 @@ const AuctionItemPage = () => {
 
 
     const similar_rows = () => {
-        const temp = similarItems.filter(auction => auction.auctionId != item.auctionId)
+        const temp = similarItems.filter(auction => auction.auctionId != item.auctionId && (auction.categoryId == item.categoryId || auction.sellerId == item.sellerId))
         if(temp.length === 0){
             return (
                 <div>

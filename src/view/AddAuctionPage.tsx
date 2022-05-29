@@ -155,8 +155,9 @@ const AddAuctionPage = () => {
         console.log(image)
 
         setErrorEditMessage("")
-
-        if(selectedEditTitle==="" || selectedEditDescription === ""){
+        if(image === ""){
+            setErrorEditMessage("Image is required")
+        } else if(selectedEditTitle==="" || selectedEditDescription === ""){
             setErrorEditMessage("Title and description are required")
         } else if (checkEditDate()){
             setErrorEditMessage("End Date Must Be In The Future")
@@ -206,9 +207,6 @@ const AddAuctionPage = () => {
                                     Upload Image
                                 </Button>
                             </label>
-                            <Button variant="contained" component="span" color="error" className={styles.button_delete_image} onClick={deleteImagePreview} style={imageUrl===""?{display:'none'}:{display:''}}>
-                                Delete Image
-                            </Button>
                             <div className={styles.error_box} style={errorEditMessage===""?{display:'none'}:{display:''}} onClick={() => setErrorEditMessage("")}>
                                 {errorEditMessage}
                             </div>
