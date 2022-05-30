@@ -38,7 +38,7 @@ const Input = styled('input')({
 
 const AuctionItemPage = () => {
     const navigate=useNavigate();
-    const params = useParams();
+    const {auctionId} = useParams();
     const [allCategories, setAllCategories] = React.useState<Categories[]>([]);
     const [similarItems, setSimilarItems] = React.useState<Array<AuctionsItem>>([])
     const [bidders, setBidders] = React.useState<Array<Bidder>>([])
@@ -128,12 +128,14 @@ const AuctionItemPage = () => {
     React.useEffect(() => {
         userLoggedIn = JSON.parse(localStorage.getItem("userLoggedIn") as string)
         document.title ="Auction Item Page"
+
+
         const pathname = window.location.pathname;
         const myArray = pathname.split("/");
         const getAuctionId = parseInt(myArray[2]);
 
         const getItem =  () => {
-            auctionApi.getSingleAuction(getAuctionId)
+            auctionApi.getSingleAuction(Number(auctionId))
                 .then((response) => {
                     setItem(response.data)
                     auctionApi.getAllAuctions()
@@ -177,7 +179,7 @@ const AuctionItemPage = () => {
         getItem()
 
 
-    }, [])
+    }, [auctionId])
 
     const bidder_rows = () => {
         if(bidders.length === 0){
